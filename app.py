@@ -3,8 +3,11 @@ import json
 
 app = Flask(__name__)
 
-
 @app.route('/')
+def home():
+    return 'Homepage coming soon..'
+
+@app.route('/embed')
 def embed():
     title = request.args.get('title') or ""
     author = request.args.get('author') or ""
