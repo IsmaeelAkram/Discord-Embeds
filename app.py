@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import json
 
 app = Flask(__name__)
+base_url = "https://embeds.ismaeelakram.com"
 
 @app.route('/')
 def home():
@@ -13,11 +14,11 @@ def embed():
     author = request.args.get('author') or ""
     color = request.args.get('color') or ""
     image = request.args.get('image') or "https://cdn.ismaeelakram.com/1x1.png"
-    url = request.args.get('url') or "https://embed.ismaeelakram.com"
+    url = request.args.get('url') or base_url
     oembed_url = ""
 
     if author != "":
-        oembed_url = f"http://embed.ismaeelakram.com/oembed?author={ author }".replace(' ', '%20')
+        oembed_url = f"{base_url}/oembed?author={ author }".replace(' ', '%20')
 
     if image != "":
         image = image.replace('+', ' ').replace(' ', '%20')
@@ -25,7 +26,7 @@ def embed():
     if color != "":
         color = color.replace('#', '')
 
-    if url != "https://embed.ismaeelakram.com/":
+    if url != base_url:
         url = url.replace(' ', '%20')
 
     return render_template('embed.html', title=title, color=color, image=image, author=author, url=url, oembed_url=oembed_url)
