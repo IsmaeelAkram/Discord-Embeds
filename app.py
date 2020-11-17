@@ -15,10 +15,7 @@ def embed():
     color = request.args.get('color') or ""
     image = request.args.get('image') or "https://cdn.ismaeelakram.com/1x1.png"
     url = request.args.get('url') or base_url
-    oembed_url = ""
-
-    if author != "":
-        oembed_url = f"{base_url}/oembed?author={ author }".replace(' ', '%20')
+    oembed_url = f"{base_url}/oembed?author={ author }".replace(' ', '%20')
 
     if image != "":
         image = image.replace('+', ' ').replace(' ', '%20')
