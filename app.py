@@ -16,16 +16,16 @@ def embed():
     url = request.args.get('url') or "https://embed.ismaeelakram.com"
     oembed_url = ""
 
-    if author is not "":
+    if author != "":
         oembed_url = f"http://embed.ismaeelakram.com/oembed?author={ author }".replace(' ', '%20')
 
-    if image is not "":
+    if image != "":
         image = image.replace('+', ' ').replace(' ', '%20')
 
-    if color is not "":
+    if color != "":
         color = color.replace('#', '')
 
-    if url is not "https://embed.ismaeelakram.com/":
+    if url != "https://embed.ismaeelakram.com/":
         url = url.replace(' ', '%20')
 
     return render_template('embed.html', title=title, color=color, image=image, author=author, url=url, oembed_url=oembed_url)
