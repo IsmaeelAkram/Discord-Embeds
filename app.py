@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import json
 
 app = Flask(__name__)
-base_url = "https://embeds.ismaeelakram.com"
+base_url = "https://embed.ismaeelakram.com"
 
 @app.route('/')
 def home():
