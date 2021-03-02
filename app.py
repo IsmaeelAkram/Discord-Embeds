@@ -4,9 +4,11 @@ import json
 app = Flask(__name__)
 base_url = "https://embed.ismaeelakram.com"
 
+
 @app.route('/')
 def home():
     return 'Homepage coming soon..'
+
 
 @app.route('/embed')
 def embed():
@@ -15,7 +17,7 @@ def embed():
     color = request.args.get('color') or ""
     image = request.args.get('image') or "https://cdn.ismaeelakram.com/1x1.png"
     url = request.args.get('url') or base_url
-    oembed_url = f"{base_url}/oembed?author={ author }".replace(' ', '%20')
+    oembed_url = f"{base_url}/oembed?author={author}".replace(' ', '%20')
 
     if image != "":
         image = image.replace('+', ' ').replace(' ', '%20')
@@ -26,7 +28,9 @@ def embed():
     if url != base_url:
         url = url.replace(' ', '%20')
 
-    return render_template('embed.html', title=title, color=color, image=image, author=author, url=url, oembed_url=oembed_url)
+    return render_template('embed.html', title=title, color=color, image=image, author=author, url=url,
+                           oembed_url=oembed_url)
+
 
 @app.route('/oembed')
 def oembed():
@@ -35,6 +39,7 @@ def oembed():
     oembed_dict["type"] = "photo"
     oembed_dict["author_name"] = author
     return oembed_dict
+
 
 if __name__ == '__main__':
     app.run()
