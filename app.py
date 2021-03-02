@@ -5,6 +5,7 @@ app = Flask(__name__)
 base_url = "https://embed.ismaeelakram.com"
 
 
+# TODO: Make homepage to generate queries
 @app.route('/')
 def home():
     return 'Homepage coming soon..'
